@@ -2,6 +2,7 @@ import { RandomQuote } from "../pages/activities/RandomQuote";
 import { MagicSquares } from "../pages/games/MagicSquares";
 import { TicTacToe } from "../pages/games/TicTacToe";
 import {FortuneCard} from "../pages/activities/FotuneCard";
+import {weatherapp} from "../pages/activities/weatherapp"
 import numberblocs from "../assets/numberblocks.png"
 
 export const activities = [
