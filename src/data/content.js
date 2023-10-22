@@ -2,7 +2,7 @@ import { RandomQuote } from "../pages/activities/RandomQuote";
 import { MagicSquares } from "../pages/games/MagicSquares";
 import { TicTacToe } from "../pages/games/TicTacToe";
 import {FortuneCard} from "../pages/activities/FotuneCard";
-import {weatherapp} from "../pages/activities/weatherapp"
+import {WeatherApp} from "../pages/activities/weatherapp"
 import numberblocs from "../assets/numberblocks.png"
 
 export const activities = [
@@ -20,6 +20,13 @@ export const activities = [
         icon: "https://aws.astrotalk.com/assets/images/wheel_of_fortune.webp" ,
         urlTerm: "get-your-fortune",
         element: <FortuneCard />
+    },
+    {
+        title: "Weather app",
+        description:"Type City and find the temp, windspeed, and humidity there",
+        icon: "https://www.flaticon.com/free-icons/weather",
+        urlTerm: "Weather Somewhere",
+        element: <WeatherApp />
     }
 ];
 

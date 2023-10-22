@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/pages/activities/weather.css'
 
-const WeatherApp = () => {
+export const WeatherApp = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
 
@@ -9,12 +9,13 @@ const WeatherApp = () => {
   const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=';
 
   const backgroundImage = {
-    Clear: 'url(images/clear-bg.png)',
-    Clouds: 'url(images/clouds-bg.png)',
-    Rain: 'url(images/rain-bg.png)',
-    Mist: 'url(images/mist-bg.png)',
-    Drizzle: 'url(images/drizzle-bg.png)',
-    Haze: 'url(images/mist-bg.png)',
+    Clear: 'url(../../../assets/images/clear-bg.png)',
+    Clouds: 'url(../../../assets/images/clouds-bg.png)',
+    Rain: 'url(../../../assets/images/rain-bg.png)',
+    Mist: 'url(../../../assets/images/mist-bg.png)',
+    Drizzle: 'url(../../../assets/images/drizzle-bg.png)',
+    Haze: 'url(../../../assets/images/mist-bg.png)',
+    Smoke: 'url(../../../assets/images/mist-bg.png)',
   };
 
   const handleSearch = async () => {
@@ -25,6 +26,7 @@ const WeatherApp = () => {
         console.error('City not found');
       } else {
         const data = await response.json();
+        console.log(data);
         setWeatherData(data);
         setBackground(data.weather[0].main);
       }
@@ -54,28 +56,28 @@ const WeatherApp = () => {
             onChange={(e) => setCity(e.target.value)}
           />
           <button onClick={handleSearch}>
-            <img src="images/search.png" alt="Search" />
+            <img src="../../../assets/images/search.png" alt="Search" />
           </button>
         </div>
         <div className="error">
           <p>Invalid City Name</p>
         </div>
         <div className="weather">
-          <img src="images/snow.png" className="weather-icon" alt="Weather Icon" />
-          <h1 className="temp">22°C</h1>
-          <h2 className="city">Chandigarh</h2>
+          <img src="../../../assets/images/snow.png" className="weather-icon" alt="Weather Icon" />
+          <h1 className="temp">{weatherData ? `${weatherData.main.temp}°C` : 'Loading...'}</h1>
+          <h2 className="city">{weatherData ? weatherData.name : 'City Name'}</h2>
           <div className="details">
             <div className="col">
               <img src="images/humidity.png" alt="Humidity Icon" />
               <div>
-                <p className="humidity">50%</p>
+                <p className="humidity">{weatherData ? `${weatherData.main.humidity}%` : 'Loading...'}</p>
                 <p>Humidity</p>
               </div>
             </div>
             <div className="col">
               <img src="images/wind.png" alt="Wind Icon" />
               <div>
-                <p className="wind">15 km/h</p>
+                <p className="wind">{weatherData ? `${weatherData.wind.speed} km/h` : 'Loading...'}</p>
                 <p>Wind Speeds</p>
               </div>
             </div>

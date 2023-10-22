@@ -5,7 +5,7 @@
     box-sizing: border-box;
  }
  body{
-   background: url('images/clear-bg.png');
+   background: url('../../../assets/images/clear-bg.png');
     background-size: cover;
    margin: 0;
    padding: 0;
